@@ -1,59 +1,58 @@
 import 'package:flutter_go_fast/app/core/interfaces/shared_repository_interface.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SharedRepository implements ISharedRepositoryInterface{
-  
-  @override
-  Future<SharedPreferences> SetInstance() async {
-    return await SharedPreferences.getInstance();
-  }
-
+class SharedRepository implements ISharedRepositoryInterface {
   @override
   Future<dynamic> getValue<T>(String key) async {
-    return await SetInstance().then((SharedPreferences){
+    return await setInstance().then((sharedPreferences) {
       switch (T) {
         case double:
-          return SharedPreferences.getDouble(key);
+          return sharedPreferences.getDouble(key);
           break;
         case int:
-          return SharedPreferences.getInt(key);
+          return sharedPreferences.getInt(key);
           break;
         case String:
-          return SharedPreferences.getString(key);
+          return sharedPreferences.getString(key);
           break;
         case List:
-          return SharedPreferences.getStringList(key);
+          return sharedPreferences.getStringList(key);
           break;
         case bool:
-          return SharedPreferences.getBool(key);
+          return sharedPreferences.getBool(key);
           break;
         default:
-          return SharedPreferences.getString(key);
+          return sharedPreferences.getString(key);
       }
     });
   }
 
   @override
+  Future<SharedPreferences> setInstance() async {
+    return await SharedPreferences.getInstance();
+  }
+
+  @override
   Future<bool> setValue<T>(String key, dynamic value) async {
-    return await SetInstance().then((SharedPreferences){
+    return await setInstance().then((sharedPreferences) {
       switch (T) {
         case double:
-          return SharedPreferences.setDouble(key, value);
+          return sharedPreferences.setDouble(key, value);
           break;
         case int:
-          return SharedPreferences.setInt(key, value);
+          return sharedPreferences.setInt(key, value);
           break;
         case String:
-          return SharedPreferences.setString(key, value);
+          return sharedPreferences.setString(key, value);
           break;
         case List:
-          return SharedPreferences.setStringList(key, value);
+          return sharedPreferences.setStringList(key, value);
           break;
         case bool:
-          return SharedPreferences.setBool(key, value);
+          return sharedPreferences.setBool(key, value);
           break;
         default:
-          return SharedPreferences.setString(key, value);
+          return sharedPreferences.setString(key, value);
       }
     });
   }
