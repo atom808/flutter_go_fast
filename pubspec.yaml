@@ -23,12 +23,18 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  # Rotas e Injeção de Dependência
   flutter_modular: ^1.1.2
+  # Localização e Idioma
   flutter_localizations:
     sdk: flutter
+  # Gerência de Estado
   mobx: ^1.2.0
   flutter_mobx: ^1.1.0
+  # Armazenamento Local
   shared_preferences: ^0.5.7+2
+  # Firebase
+  cloud_firestore: ^0.13.5
 
 
   # The following adds the Cupertino Icons font to your application.
